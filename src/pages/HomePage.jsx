@@ -1,10 +1,14 @@
 import React from 'react';
+import { useAuth } from '../hooks/useAuth';
 
 const HomePage = () => {
+    const { auth } = useAuth()
     return (
-        <div>
-         HomePage
-        </div>
+        <>
+            <div >
+                <h1>Home</h1>
+            </div>
+        </>
     );
 };
 
