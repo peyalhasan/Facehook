@@ -12,14 +12,16 @@ const PrivateRoutes = () => {
         <>
             {
                 auth.user ? (
-                    <main
-                        className="flex min-h-screen  justify-center bg-deepDark "
-                    >
-                        <div className='container mx-auto'>
-                            <Header />
-                            <Outlet />
-                        </div>
-                    </main>
+                    <>
+                        <Header />
+                        <main
+                            className="flex min-h-screen  justify-center bg-deepDark "
+                        >
+                            <div className='container mx-auto'>
+                                <Outlet />
+                            </div>
+                        </main>
+                    </>
                 ) : (
                     <Navigate to='/login' />
                 )

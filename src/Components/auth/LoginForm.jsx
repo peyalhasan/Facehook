@@ -2,26 +2,44 @@ import React from 'react';
 import Field from '../common/Field'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
-import {useAuth} from '../../hooks/useAuth'
+import { useAuth } from '../../hooks/useAuth'
+import axios from 'axios';
 
 
 const LoginForm = () => {
 
-    const {setAuth} = useAuth()
+    const { setAuth } = useAuth()
 
     const navigate = useNavigate()
     const {
         register,
         handleSubmit,
-        formState: { errors }
+        formState: { errors },
+        setError,
     } = useForm();
 
-    const submitForm = (formData) => {
-        // Make an API Call
-        // Will Return Tokens and Loged in User information
-        const user = {...formData};
-        setAuth({user})
-        navigate('/')
+    const submitForm = async (formData) => {
+        try {
+            // Make an API Call
+            const resoponse = await axios.post(`${import.meta.env.VITE_SERVER_BASE_URL}/auth/login`);
+            if (resoponse.status === 200) {
+                const { token, user } = resoponse.data;
+                if (token) {
+                    const authToken = token.token;
+                    const refreshToken = token.refreshToken;
+                    console.log(authToken, refreshToken)
+
+                    setAuth({ user, authToken, refreshToken })
+                    navigate('/')
+                }
+            }
+
+        } catch (error) {
+            setError('root.random', {
+                type: 'random',
+                message: `User with email ${formData.email} is not found`
+            })
+        }
     }
 
 
@@ -46,6 +64,7 @@ const LoginForm = () => {
                     className={`auth-input ${errors.password ? 'border-red-600' : 'border-gray-200'} `}
                     type="emil" name="password" id="password" placeholder='Enter your password' />
             </Field>
+            <p>{errors?.root?.random?.message}</p>
 
             <Field>
                 <button
