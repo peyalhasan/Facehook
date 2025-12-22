@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-lws-green: #00d991;
+  --color-deepDark: #17181c;
+  --color-mediumDark: #1e1f24;
+  --color-lighter-dark: #27292f;
+
+  --font-inter: "Inter", sans-serif;
+
+  --container-center: true;
+  --container-padding: 1rem;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+/* --- Custom Utilities (Reuse korar jonno ekhane rakhun) --- */
+
+@utility flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@utility card {
+  border-radius: 0.375rem; /* rounded-md */
+  border-width: 1px;
+  border-color: #3F3F3F;
+  background-color: var(--color-mediumDark);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  
+  @media (min-width: 1024px) {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+}
+
+/* --- Base Styles --- */
+@layer base {
+  body {
+    @apply bg-deepDark font-inter text-gray-100;
+  }
+}
+
+/* --- Components --- */
+@layer components {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  
+  .btn-primary {
+    @apply flex-center gap-2 rounded-md bg-lighter-dark px-5 py-2.5 text-sm font-medium text-white hover:bg-deepDark lg:text-lg;
+  }
+
+  .icon-btn {
+    @apply flex-center rounded-md bg-lighter-dark p-1.5 font-medium text-white hover:bg-deepDark;
+  }
+
+  .form-control {
+    @apply mb-6 space-y-2.5;
+  }
+
+  .auth-label {
+    @apply leading-[138%] lg:text-lg;
+  }
+
+  .auth-input {
+    @apply w-full rounded-md border border-[#CCCCCC]/[14%] bg-lighter-dark p-1.5 focus:outline-none lg:p-3;
+  }
+
+  .post-avater {
+    @apply max-w-10 max-h-10 rounded-full lg:max-h-[58px] lg:max-w-[58px];
+  }
+
+  /* Action Modal  */
+  .action-modal-container {
+    @apply card absolute right-full top-6 min-w-[200px] divide-y divide-[#3F3F3F] py-2;
+  }
+  
+  /* Modal er bhetorer button style */
+  .action-modal-container > button {
+    @apply py-2;
+  }
+
+  .action-menu-item {
+    @apply flex w-full items-center gap-2 text-gray-100 transition-all;
+  }
+}
