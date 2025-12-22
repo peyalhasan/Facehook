@@ -2,7 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-lws-green: #00d991;
+  --color-lwsGreen: #00d991;
   --color-deepDark: #17181c;
   --color-mediumDark: #1e1f24;
   --color-lighter-dark: #27292f;

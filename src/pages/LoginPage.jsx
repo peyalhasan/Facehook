@@ -30,7 +30,7 @@ const LoginPage = () => {
 
                     <div className="card">
 
-                        {/* Login Form  */}
+                        {/* Login Form */}
                         <LoginForm />
 
                         <div className="py-4 lg:py-6">
