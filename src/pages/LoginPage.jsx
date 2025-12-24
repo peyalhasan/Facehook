@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import LoginForm from '../Components/auth/LoginForm';
 
 const LoginPage = () => {
+    
     return (
         <main
             className="flex min-h-screen items-center justify-center bg-deepDark py-8"
