@@ -6,7 +6,6 @@ import axios from "axios";
 const useAxios = () => {
   const { auth, setAuth } = useAuth();
 
-  console.log(api)
 
   useEffect(() => {
 
