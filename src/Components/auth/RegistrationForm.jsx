@@ -16,11 +16,10 @@ const RegistrationForm = () => {
         setError,
     } = useForm();
     const submitForm = async (formData) => {
-        console.log("Base URL", import.meta.env.VITE_SERVER_BASE_URL )
+       
         try {
             let response = await axios.post(`${import.meta.env.VITE_SERVER_BASE_URL}/auth/register`, formData);
-            console.log(response)
-
+            
             if (response.status === 201) {
                 navigate('/login')
             }

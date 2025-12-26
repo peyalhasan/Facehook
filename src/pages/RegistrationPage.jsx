@@ -26,7 +26,10 @@ const RegistrationPage = () => {
                     {/* <!-- illustration and title ends --> */}
                     {/* <!-- login form --> */}
                     <div className="card">
+
+                        {/* RegistrationPage */}
                         <RegistrationForm />
+                        
                         <div className="py-4 lg:py-4">
                             <p className="text-center text-xs text-gray-600/95 lg:text-sm">
                                 Already have an account?
