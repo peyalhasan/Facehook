@@ -10,9 +10,6 @@ const PostBody = ({post}) => {
             <div className="flex items-center justify-center overflow-hidden">
                 <img className="w-1/2 " src={`${import.meta.env.VITE_SERVER_BASE_URL}/${post?.image}`} alt="poster" />
             </div>
-            <p>
-               {post.content}
-            </p>
         </div>
 
     );

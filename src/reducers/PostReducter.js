@@ -1,6 +1,4 @@
-
-import {actions} from '../actions/index';
-
+import { actions } from '../actions/index';
 
 const initialState = {
     posts: [],
@@ -9,8 +7,7 @@ const initialState = {
 }
 
 const postReducer = (state, action) => {
-
-    switch(action.type){
+    switch (action.type) {
         case actions.post.DATA_FETCHING: {
             return {
                 ...state,
@@ -36,7 +33,7 @@ const postReducer = (state, action) => {
             return {
                 ...state,
                 loading: false,
-                posts: [...state.posts, action.data]
+                posts: [action.data, ...state.posts]
             }
         }
 
@@ -44,16 +41,27 @@ const postReducer = (state, action) => {
             return {
                 ...state,
                 loading: false,
-                user: action.data
+                posts: state.posts.map((post) => {
+                    if (post.id === action.data.id) {
+                        return action.data;
+                    }
+                    return post;
+                })
             }
         }
 
-        default : {
-            return state;
+        case actions.post.POST_DELETED: {
+            return {
+                ...state,
+                loading: false,
+                posts: state.posts.filter((item) => item.id !== action.data),
+            };
         }
         
+        default: {
+            return state;
+        }
     }
-    
 }
 
-export {initialState, postReducer}
+export { initialState, postReducer }

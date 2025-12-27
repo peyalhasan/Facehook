@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import PostEntry from './PostEntry';
 import { useProfile } from '../../hooks/useProfile';
+import { usePost } from '../../hooks/usePost';
 
 const NewPost = () => {
     const { auth } = useAuth();
-    const [showPostEntry, setShowPostEntry] = useState(false);
-    const {state: profile} = useProfile()
+    const {showPostEntry, setShowPostEntry} = usePost()
+    const { state: profile } = useProfile()
     const user = profile?.user ?? auth?.user
 
     return (
         <>
             {
                 showPostEntry ? (
-                    <PostEntry />
+                    <PostEntry onCreate={()=>setShowPostEntry(false)} />
                 ) : (
                     <div className="card">
                         <div className="flex-center mb-3 gap-2 lg:gap-4">
